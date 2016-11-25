@@ -31,6 +31,16 @@ public class HttpPost extends HttpRequest {
 		}
 	}
 	
+	public void setMultiPartFormBody(MultiPartForm form){
+		if((form == null) || (form.isEmpty())){
+			return ;
+		}
+		
+		addHeader("Content-Type", form.getContentType());
+		
+		this.bodyData = form.getData();
+	}
+	
 	public void setJsonBody(String json){
 		if(json == null){
 			return ;

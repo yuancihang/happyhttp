@@ -9,7 +9,8 @@ import java.io.File;
 public class HttpBuilder {
 
 	private HttpRequest request;
-	private Form form = new Form();
+	private Form form;
+	private MultiPartForm multiPartForm;
 
 	public HttpRequest getRequest() {
 		return request;
@@ -37,7 +38,20 @@ public class HttpBuilder {
 	}
 	
 	public HttpBuilder addFormField(String name, String value){
+		if(form == null){
+			form = new Form();
+		}
+		
 		form.addFormField(name, value);
+		return this;
+	}
+	
+	public HttpBuilder addMultiPartFormField(String name, Object value){
+		if(multiPartForm == null){
+			multiPartForm = new MultiPartForm();
+		}
+		
+		multiPartForm.addMultiPartFormField(name, value);
 		return this;
 	}
 	
@@ -58,9 +72,14 @@ public class HttpBuilder {
 	}
 	
 	public HttpBuilder apply(){
-		if(!form.isEmpty()){
+		if((form != null) && !form.isEmpty()){
 			setForm(form);
+		}else if((multiPartForm != null) && !multiPartForm.isEmpty()){
+			if(request instanceof HttpPost){
+				((HttpPost)request).setMultiPartFormBody(multiPartForm);
+			}
 		}
+		
 		return this;
 	}
 
