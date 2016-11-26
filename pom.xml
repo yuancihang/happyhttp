@@ -2,12 +2,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>happy</groupId>
+	<groupId>com.github.yuancihang</groupId>
 	<artifactId>happyhttp</artifactId>
 	<version>1.2-SNAPSHOT</version>
 
 	<name>happyhttp</name>
-	<url>http://maven.apache.org</url>
+	<url>https://github.com/yuancihang/happyhttp</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -38,4 +38,12 @@
                      			
 		</plugins>
 	</build>
+	<description>简单而强大的http client 库</description>
+	<distributionManagement>
+        <repository>
+            <id>snapshot-deployment</id>
+            <name>snapshot-deployment</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </repository>
+    </distributionManagement>
 </project>
