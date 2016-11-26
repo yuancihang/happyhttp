@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Random;
 
 public class MultiPartForm {
-	private static final String MULTIPART_CHARS = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	private static final String MULTIPART_CHARS = "-_1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	
 	private String boundarystr;
 	private String boundary;
@@ -17,8 +17,8 @@ public class MultiPartForm {
 	
 	public MultiPartForm(){
 		boundarystr = generateMultipartBoundary();
-		boundary = "------" + boundarystr + "\r\n";
-		endBoundary = boundary + "--";
+		boundary = "--" + boundarystr + "\r\n";
+		endBoundary = "--" + boundarystr + "--\r\n";
 	}
 	
 	private String generateMultipartBoundary() {
@@ -75,10 +75,9 @@ public class MultiPartForm {
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append(boundary);
-		sb.append("Content-Disposition:form-data;name=\""+name+"\"");
-		sb.append("\r\n\r\n\r\n");
-		sb.append(value);
-		sb.append("\r\n\r\n");
+		sb.append("Content-Disposition: form-data; name=\""+name+"\"\r\n");
+		sb.append("\r\n");
+		sb.append(value + "\r\n");
 		
 		os.write(sb.toString().getBytes());
 	}
@@ -87,12 +86,12 @@ public class MultiPartForm {
 		os.write(boundary.getBytes());
 
 		StringBuilder sb = new StringBuilder();
-		sb.append("Content-Disposition:form-data;Content-Type:application/octet-stream;name=\""+name+"\";filename=\""+name+"\"");
-		sb.append("\r\n\r\n\r\n");
+		sb.append("Content-Disposition: form-data; name=\""+name+"\"; filename=\""+name+"\"\r\n");
+		sb.append("Content-Type: application/octet-stream" + "\r\n");
+		sb.append("\r\n");
 		os.write(sb.toString().getBytes());
 
 		os.write(value);
-
-		os.write("\r\n\r\n\r\n".getBytes());
+		os.write("\r\n".getBytes());
 	}
 }

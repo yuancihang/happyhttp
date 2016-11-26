@@ -43,3 +43,14 @@
 	public static void sampleDownload(){
 		HttpBuilder.newGet("http://www.xxx.com/").download(new File("a.html"));
 	}
+
+	public static void sampleMultiPart(){
+		HttpResponse response =	HttpBuilder
+									.newPost("http://localhost:8080/DemoServlet/upload")
+									.addMultiPartFormField("a", "1")
+									.addMultiPartFormField("f1", "abc".getBytes())
+//									.setProxy("127.0.0.1", 8888, null, null)
+									.execute();
+									
+		System.err.println(response.getBodyAsText());
+	}
