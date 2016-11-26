@@ -56,7 +56,7 @@ public class HttpExample {
 									.newPost("http://localhost:8080/DemoServlet/upload")
 									.addMultiPartFormField("a", "1")
 									.addMultiPartFormField("f1", "abc".getBytes())
-//									.setProxy("127.0.0.1", 8888, null, null)
+									.setProxy("127.0.0.1", 8888, null, null)
 									.execute();
 									
 		System.err.println(response.getBodyAsText());
