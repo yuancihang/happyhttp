@@ -14,9 +14,9 @@ public class Form {
 
 	/**
 	 * 添加表单字段
-	 * @param name
-	 * @param value
-	 * @return
+	 * @param name 字段名
+	 * @param value 字段值
+	 * @return 表单对象
 	 */
 	public Form addFormField(String name, String value){
 		form.put(name, value);

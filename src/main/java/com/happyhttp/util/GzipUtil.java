@@ -14,9 +14,9 @@ public class GzipUtil {
 
 	/**
 	 * gzip压缩
-	 * @param data
-	 * @return
-	 * @throws IOException
+	 * @param data 原始数据
+	 * @return 压缩后的数据
+	 * @throws IOException 压缩流会抛出该异常
 	 */
 	public static byte[] compress(byte[] data) throws IOException{
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -36,9 +36,9 @@ public class GzipUtil {
 	
 	/**
 	 * gzip解压缩
-	 * @param data
-	 * @return
-	 * @throws IOException
+	 * @param data 原始数据
+	 * @return 解压后的数据
+	 * @throws IOException 解压流会抛出该异常
 	 */
 	public static byte[] uncompress(byte[] data) throws IOException {
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();

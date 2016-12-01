@@ -3,7 +3,7 @@ package com.happyhttp;
 import java.io.File;
 
 /**
- * @author yuan<cihang.yuan@happyelements.com>
+ * @author <a href="mailto:cihang.yuan@happyelements.com">cihang.yuan@happyelements.com</a>
  *
  */
 public class HttpBuilder {
@@ -28,9 +28,9 @@ public class HttpBuilder {
 	
 	/**
 	 * 添加http请求头
-	 * @param name
-	 * @param value
-	 * @return
+	 * @param name 请求头名
+	 * @param value 请求头值
+	 * @return 构建器本身
 	 */
 	public HttpBuilder addHeader(String name, String value){
 		request.addHeader(name, value);

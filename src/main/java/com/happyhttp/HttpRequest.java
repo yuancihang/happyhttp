@@ -31,9 +31,8 @@ public abstract class HttpRequest {
 	
 	/**
 	 * 添加http请求头
-	 * @param name
-	 * @param value
-	 * @return
+	 * @param name 请求头名
+	 * @param value 请求头值
 	 */
 	public void addHeader(String name, String value){
 		headerMap.put(name, value);
