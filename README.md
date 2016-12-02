@@ -54,3 +54,13 @@
 									
 		System.err.println(response.getBodyAsText());
 	}
+	
+## maven
+	<dependency>
+	    <groupId>com.github.yuancihang</groupId>
+	    <artifactId>happyhttp</artifactId>
+	    <version>1.2</version>
+	</dependency>
+	
+## gradle
+	compile 'com.github.yuancihang:happyhttp:1.2'
